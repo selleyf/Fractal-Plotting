@@ -18,14 +18,14 @@ FRACTAL = 'burning_ship'
 
 MAX_ITER = 60
 
-# create colormap
+# Create colormap
 # See https://matplotlib.org/stable/users/explain/colors/colormaps.html for more choices
 cmap = mpl.colormaps['turbo']._resample(MAX_ITER)
 temp_colormap = cmap(range(MAX_ITER)).tolist()
 COLORMAP = [[color[0]*255, color[1]*255, color[2]*255] for color in temp_colormap]
 
 def escape_time_pixel(x, y):
-# assign color to pixel based on escape time
+# Assign color to pixel based on escape time
     c = complex(x,y)
     z = complex(0,0)
     escape_time = MAX_ITER
@@ -79,6 +79,7 @@ def fractal_png(x, y, width, height, stepsize, iter = ''):
     arr = np.array(fr_png)
     path = './zoom_small' # define where to save the image
     cv2.imwrite(os.path.join(path , f'{FRACTAL}_{x}_{y}_{width}_{height}{iter}.png'), arr)
+
 
 ####################
 ## Example calls: ##
